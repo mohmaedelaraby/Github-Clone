@@ -1,14 +1,16 @@
 import { useState, useCallback, useMemo } from "react";
-import SearchField from "../../shared/SearchField/SearchField";
-import { Repository } from "../../types/Types";
-import RepoCard from "./components/RepoCard/RepoCard";
-import useGetRepos from "./services/useGetRepos";
-import "./styles.css";
-import EmptyRepositories from "./components/EmptyRepositories/EmptyRepositories";
-import LoadingStatePage from "../../shared/LoadingState/LoadingState";
-import ErrorStatePage from "../../shared/ErrorState/ErrorState";
 
-function RepositoriesPage() {
+import "./styles.css";
+import useGetRepos from "../../Hooks/useGetRepos";
+import SearchField from "../../../../common/Components/SearchField/SearchField";
+import LoadingStatePage from "../../../../common/Components/LoadingState/LoadingState";
+import ErrorStatePage from "../../../../common/Components/ErrorState/ErrorState";
+import EmptyRepositories from "../../Components/EmptyRepositories/EmptyRepositories";
+import { Repository } from "../../../../types/Types";
+import RepositoryCard from "../../Components/RepositoryCard/RepositoryCard";
+
+
+function RepositoriesContainer() {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   // Custom hook to get repositories, loading state, and error state
@@ -43,7 +45,7 @@ function RepositoriesPage() {
 
           {!isLoading && !isError && searchQuery && reposData.length > 0 && 
             reposData.map((repo: Repository) => (
-              <RepoCard key={repo.id} repo={repo} handleStar={handleStar} />
+              <RepositoryCard key={repo.id} repo={repo} handleStar={handleStar} />
             ))
           }
         </div>
@@ -52,4 +54,4 @@ function RepositoriesPage() {
   );
 }
 
-export default RepositoriesPage;
+export default RepositoriesContainer;

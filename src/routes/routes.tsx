@@ -1,8 +1,9 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
-import MainLayout from "../layouts/MainLayout/MainLayout";
 import { useEffect } from "react";
-import GithubHome from "../pages/GithubHome/GithubHome";
-import NotFound from "../pages/NotFound/NotFound";
+import MainLayout from "../common/Layouts/MainLayout/MainLayout";
+import NotFound from "../common/Components/NotFound/NotFound";
+import RepositoriesPage from "../modules/Repositories/Pages/RepositoriesPage/RepositoriesPage";
+
 // Assuming this is your 404 page component
 
 export const RootRoutes = () => {
@@ -19,7 +20,7 @@ export const RootRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route path="/repos" index element={<GithubHome/>} />
+        <Route path="/repos" index element={<RepositoriesPage/>} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

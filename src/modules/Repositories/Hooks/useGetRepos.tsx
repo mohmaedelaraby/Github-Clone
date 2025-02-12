@@ -1,9 +1,13 @@
 import { useQuery, UseQueryResult } from "react-query";
 import { Repository } from "../../../types/Types";
-import { searchRepositories, starRepository, unstarRepository } from "../apis/reposApis";
 import { useRepoStore } from "../../../stores/useRepositoryStore";
 import { useEffect, useState } from "react";
 import debounce from "lodash.debounce";
+import {
+  searchRepositories,
+  starRepository,
+  unstarRepository,
+} from "../Services/reposApis";
 
 // Debounced API call function
 const fetchRepos = async (keyword: string) => {
@@ -14,7 +18,8 @@ const fetchRepos = async (keyword: string) => {
 };
 
 const useGetRepos = (keyword: string = "", limit = 10) => {
-  const { repositories, setRepositories, toggleStar, starredRepos } = useRepoStore();
+  const { repositories, setRepositories, toggleStar, starredRepos } =
+    useRepoStore();
   const [debouncedKeyword, setDebouncedKeyword] = useState(keyword);
 
   // Update debounced keyword after user stops typing
@@ -30,24 +35,21 @@ const useGetRepos = (keyword: string = "", limit = 10) => {
     };
   }, [keyword, debouncedSearch]);
 
-  const {
-    data,
-    isLoading,
-    isError,
-  }: UseQueryResult<Repository[], Error> = useQuery<Repository[], Error>(
-    ["repos", { debouncedKeyword, limit }],
-    () => fetchRepos(debouncedKeyword),  // Use debounced keyword for API call
-    {
-      enabled: !!debouncedKeyword, // Only enable the query if there is a keyword
-      onSuccess: (data) => {
-        setRepositories(data); // Update Zustand state with fetched repositories
-      },
-      refetchOnWindowFocus: false,
-      keepPreviousData: true,
-      staleTime: 2000,
-      retry: false, // Disable retry on error
-    }
-  );
+  const { data, isLoading, isError }: UseQueryResult<Repository[], Error> =
+    useQuery<Repository[], Error>(
+      ["repos", { debouncedKeyword, limit }],
+      () => fetchRepos(debouncedKeyword), // Use debounced keyword for API call
+      {
+        enabled: !!debouncedKeyword, // Only enable the query if there is a keyword
+        onSuccess: (data) => {
+          setRepositories(data); // Update Zustand state with fetched repositories
+        },
+        refetchOnWindowFocus: false,
+        keepPreviousData: true,
+        staleTime: 2000,
+        retry: false, // Disable retry on error
+      }
+    );
 
   // Handle star/unstar for a repository
   const handleStar = async (repo: Repository) => {
@@ -73,7 +75,7 @@ const useGetRepos = (keyword: string = "", limit = 10) => {
     reposData: repositories || data,
     isLoading,
     isError,
-    handleStar,  // Function to toggle star status
+    handleStar, // Function to toggle star status
   };
 };
 

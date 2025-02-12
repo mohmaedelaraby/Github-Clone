@@ -8,7 +8,7 @@ interface Props {
   handleStar: (repo: Repository) => void; // Receive handleStar as a prop
 }
 
-function RepoCard({ repo, handleStar }: Props) {
+function RepositoryCard({ repo, handleStar }: Props) {
   const { starredRepos } = useRepoStore();
   const [isStarred, setIsStarred] = useState<boolean>(false);
   const [starCount, setStarCount] = useState<number>(repo.stargazers_count);
@@ -58,4 +58,4 @@ function RepoCard({ repo, handleStar }: Props) {
   );
 }
 
-export default RepoCard;
+export default RepositoryCard;
