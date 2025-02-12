@@ -12,7 +12,7 @@ function SearchField(props: Props) {
 
   const debouncedOnChange = debounce((value: string) => {
     onChange(value);
-  }, 500);
+  }, 200);
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;

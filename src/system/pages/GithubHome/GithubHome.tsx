@@ -1,4 +1,4 @@
-import Home from "../../modules/Home/Home";
+import RepositoriesPage from "../../modules/Home/RepositoriesPage";
 import "./styles.css";
 import DescriptionIcon from "@mui/icons-material/Description";
 
@@ -13,7 +13,7 @@ function GithubHome() {
           </div>
         </div>
         <div className="homePage_body">
-          <Home />
+          <RepositoriesPage />
         </div>
       </div>
     </>

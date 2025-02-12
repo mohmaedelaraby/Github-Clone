@@ -1,0 +1,24 @@
+.empty_Repositories {
+  min-height: 300px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.empty_Repositories__container {
+  padding: 16px;
+}
+.empty_Repositories__container_header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+.empty_Repositories__container_header_icon {
+  transform: scale(4);
+}
+.empty_Repositories__container_body {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}

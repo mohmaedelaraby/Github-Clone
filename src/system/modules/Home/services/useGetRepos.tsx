@@ -20,7 +20,7 @@ const useGetRepos = (keyword: string = "", limit = 10) => {
   // Update debounced keyword after user stops typing
   const debouncedSearch = debounce((search: string) => {
     setDebouncedKeyword(search);
-  }, 500); // Debounce time set to 500ms (0.5 second)
+  }, 200); // Debounce time set to 200ms (0.5 second)
 
   // Update state only after a delay
   useEffect(() => {
@@ -44,7 +44,7 @@ const useGetRepos = (keyword: string = "", limit = 10) => {
       },
       refetchOnWindowFocus: false,
       keepPreviousData: true,
-      staleTime: 5000,
+      staleTime: 2000,
       retry: false, // Disable retry on error
     }
   );
