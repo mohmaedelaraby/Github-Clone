@@ -1,0 +1,84 @@
+/* Overall card styling */
+.repo_card {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 20px;
+  transition: transform 0.3s ease;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.repo_card_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.repo_card_header_name {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+}
+
+.repo_card_header_owner {
+  font-size: 14px;
+  color: #777;
+}
+
+.repo_card_header_owner_link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.repo_card_header_owner_link:hover {
+  text-decoration: underline;
+}
+
+.repo_card_description {
+  font-size: 14px;
+  color: #555;
+  margin: 15px 0;
+}
+
+.repo_card_stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.repo_card_stats_stars,
+.repo_card_stats_forks {
+  color: #555;
+}
+
+.repo_card_star_btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.repo_card_star_btn:hover {
+  background-color: #0056b3;
+}
+
+/* Starred state */
+.starred {
+  background-color: #28a745;
+}
+
+.starred:hover {
+  background-color: #218838;
+}
+
+/* Hover effect for the card */
+.repo_card:hover {
+  transform: translateY(-5px);
+}

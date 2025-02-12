@@ -1,87 +1,42 @@
-export interface Season {
-  season: string;
+// types/Types.ts
+
+export interface Owner {
+  login: string;
+  id: number;
+  node_id: string;
+  avatar_url: string;
+  html_url: string;
+  type: string;
+  site_admin: boolean;
+}
+
+export interface License {
+  key: string;
+  name: string;
+  spdx_id: string;
   url: string;
 }
 
-export interface SeasonResponse {
-  SeasonTable: {
-    Seasons: Season[];
-  };
-  total: number; // The total number of seasons available in the database
-}
-
-export interface RaceResponse {
-  RaceTable: {
-    Races: Races[];
-  };
-  total: number; // The total number of seasons available in the database
-}
-
-export interface Races {
-  season: string;
-  round: string;
+export interface Repository {
+  id: number;
+  node_id: string;
+  name: string;
+  full_name: string;
+  private: boolean;
+  owner: Owner;
+  html_url: string;
+  description: string | null;
+  fork: boolean;
   url: string;
-  raceName: string;
-  Circuit: {
-    circuitId: string;
-    url: string;
-    circuitName: string;
-    Location: {
-      lat: string;
-      long: string;
-      locality: string;
-      country: string;
-    };
-  };
-  Results: Result[];
-  date: string;
-}
-
-export interface RacesPerSeason {
-  season: string;
-  races: Races[];
-}
-
-export interface Result {
-  Constructor: {
-    constructorId: string;
-    url: string;
-    name: string;
-    nationality: string;
-  };
-  Driver: {
-    driverId: string;
-    url: string;
-    givenName: string;
-    familyName: string;
-    dateOfBirth: string;
-    nationality: string;
-  };
-
-  Time: { millis: string; time: string };
-  FastestLap: {
-    rank: string;
-    lap: string;
-    Time: {
-      time: string;
-    };
-    AverageSpeed: {
-      units: string;
-      speed: string;
-    };
-  };
-  grid: string;
-  laps: string;
-  number: string;
-  points: string;
-  position: string;
-  positionText: string;
-  status: string;
-}
-
-export interface RaceResultsResponse {
-  RaceTable: {
-    Races: Races[];
-  };
-  total: number;
+  created_at: string;
+  updated_at: string;
+  pushed_at: string;
+  stargazers_count: number;
+  watchers_count: number;
+  language: string | null;
+  forks_count: number;
+  license: License | null;
+  open_issues_count: number;
+  default_branch: string;
+  starred?: boolean; // Add an optional "starred" field for star state management
 }

@@ -1,0 +1,22 @@
+.home {
+  width: 100%;
+  background-color: #fbfdff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.home_container {
+}
+.home_container__header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-bottom: 1px dashed #57606a;
+  padding: 16px;
+}
+.home_container__body {
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
