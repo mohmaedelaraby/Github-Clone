@@ -21,7 +21,7 @@ function Home() {
         </div>
         <div className="home_container__body">
           {isLoading ? (
-            <div>Loading...</div>
+            <div>Loading.. .</div>
           ) : isError ? (
             <div>Error fetching repositories</div>
           ) : reposData.length > 0 ? (
