@@ -15,5 +15,5 @@ coding steps :
 - create the ui 
 - fetching the data using axios and react query
 - using zustand and set the data on it and read/write from 
-- handle error , loadin , emopty stats
+- handle error , loading , empty , notfound stats
 - deployment 
