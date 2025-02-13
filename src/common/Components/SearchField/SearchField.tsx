@@ -12,6 +12,7 @@ function SearchField(props: Props) {
 
   const debouncedOnChange = debounce((value: string) => {
     onChange(value);
+    //here if you debounce the emit value from the search field
   }, 0);
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {

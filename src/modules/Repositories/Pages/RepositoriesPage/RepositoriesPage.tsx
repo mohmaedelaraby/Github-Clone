@@ -1,17 +1,12 @@
 import RepositoriesContainer from "../../Components/RepositoriesContainer/RepositoriesContainer";
+import RepositoriesHeader from "../../Components/RepositoriesHeader/RepositoriesHeader";
 import "./styles.css";
-import DescriptionIcon from "@mui/icons-material/Description";
 
 function RepositoriesPage() {
   return (
     <>
       <div className="repos">
-        <div className="repos_header">
-          <div className="repos_header_title">
-            <div className="repos_header_title_icon"><DescriptionIcon/></div>
-            <div className="repos_header_title_text"> Repositories</div>
-          </div>
-        </div>
+        <RepositoriesHeader/>
         <div className="repos_body">
           <RepositoriesContainer />
         </div>

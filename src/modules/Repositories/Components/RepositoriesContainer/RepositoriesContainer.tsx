@@ -10,7 +10,7 @@ import RepositoryCard from "../../Components/RepositoryCard/RepositoryCard";
 import useSearchValue from "../../../../common/Hooks/useSeachValue";
 import useRepositoriesAction from "../../Hooks/useRepostioriesAction";
 import DataObjectIcon from "@mui/icons-material/DataObject";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 
 function RepositoriesContainer() {
   const { searchQuery, handleSearchChange } = useSearchValue();
@@ -31,11 +31,12 @@ function RepositoriesContainer() {
   }, [searchQuery]);
 
   const emptyRepositoriesIcon = useMemo(() => {
-    return searchQuery
-      ? <DataObjectIcon className="empty_Repositories__container_header_icon" />
-      : <SearchIcon className="empty_Repositories__container_header_icon" />
+    return searchQuery ? (
+      <DataObjectIcon className="empty_Repositories__container_header_icon" />
+    ) : (
+      <SearchIcon className="empty_Repositories__container_header_icon" />
+    );
   }, [searchQuery]);
-
 
   return (
     <div className="repos_page">
@@ -51,10 +52,13 @@ function RepositoriesContainer() {
         <div className="repos_page_container__body">
           {searchQuery ? (
             <>
+              {/*loading state */}
               {isLoading && <LoadingStatePage />}
 
+              {/*error state */}
               {isError && <ErrorStatePage />}
 
+              {/*empty state if user enter a value and there is np repos woth this name */}
               {!isLoading &&
                 !isError &&
                 !isCheckReq &&
@@ -66,7 +70,6 @@ function RepositoriesContainer() {
                     Icon={emptyRepositoriesIcon}
                   />
                 )}
-
               {!isLoading &&
                 !isError &&
                 searchQuery &&
@@ -81,11 +84,11 @@ function RepositoriesContainer() {
                 ))}
             </>
           ) : (
+            //here if user didn't enter value in search 
             <EmptyRepositories
               text={emptyRepositoriesText}
               key={"handleEmptySearchQuery"}
               Icon={emptyRepositoriesIcon}
-
             />
           )}
         </div>

@@ -13,7 +13,7 @@ export const RootRoutes = () => {
       import("../modules/Repositories/Pages/RepositoriesPage/RepositoriesPage")
   );
 
-  //setDefault
+  //setDefault route 
   useEffect(() => {
     if (window.location.pathname === "/") {
       navigate("/repos");
