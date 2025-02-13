@@ -18,6 +18,10 @@
   background: white;
   border-radius: 100%;
   margin-inline-end: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
 }
 .topbar_Container_logo_text {
   font-size: 16px;
