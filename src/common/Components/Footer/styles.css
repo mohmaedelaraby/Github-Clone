@@ -1,0 +1,22 @@
+/* footer.css */
+.footer {
+    background-color: black;
+    color: #fff;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .footer_content {
+    font-size: 12px;
+  }
+  
+  .footer_content_text {
+    margin: 0;
+  }
+  .footer_content_text_link{
+    color: white;
+    margin-right: 4px;
+    cursor: pointer;
+
+  }
+  

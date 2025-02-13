@@ -1,0 +1,27 @@
+.topbar {
+  background-color: black;
+  width: 100%;
+  max-height: 100px;
+}
+.topbar_Container {
+  padding: 16px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+.topbar_Container_logo {
+  display: flex;
+  align-items: center;
+}
+.topbar_Container_logo_icon {
+  background: white;
+  border-radius: 100%;
+  margin-inline-end: 12px;
+}
+.topbar_Container_logo_text {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+}
