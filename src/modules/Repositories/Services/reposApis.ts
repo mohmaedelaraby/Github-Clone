@@ -2,7 +2,6 @@ import axios from "axios";
 
 const getAuthToken = () => {
   const token = import.meta.env.VITE_GITHUB_API_TOKEN; 
-  console.log("Token:", token); 
   if (!token) {
     throw new Error("GitHub API token is missing.");
   }

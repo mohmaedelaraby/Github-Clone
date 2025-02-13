@@ -22,7 +22,6 @@ function RepositoriesContainer() {
   }, [searchQuery]);
 
 
-  
   return (
     <div className="repos_page">
       <div className="repos_page_container">
@@ -37,10 +36,13 @@ function RepositoriesContainer() {
           {!searchQuery && !isLoading && !isError && (
             <EmptyRepositories text={emptyText} key={"handleEmptySearchQuery"} />
           )}
-
-          {reposData.length <= 0 && searchQuery && !isLoading && !isError && (
-            <EmptyRepositories text={emptyText} key={"handleEmptyData"} />
+          {searchQuery && reposData.length <= 0 && !isLoading && !isError && (
+            <EmptyRepositories text={emptyText} key={"handleEmptySearchQuery"} />
           )}
+
+          {/* {reposData.length <= 0 && searchQuery && !isLoading && !isError && (
+            <EmptyRepositories text={emptyText} key={"handleEmptyData"} />
+          )} */}
 
           
 

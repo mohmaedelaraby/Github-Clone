@@ -23,7 +23,7 @@ const useRepositoriesAction = (keyword: string = "", limit = 10) => {
   const [loadingRepoId, setLoadingRepoId] = useState<number | null>(null);
   const debouncedSearch = debounce((search: string) => {
     setDebouncedKeyword(search);
-  }, 200);
+  }, 500);
 
   useEffect(() => {
     debouncedSearch(keyword);

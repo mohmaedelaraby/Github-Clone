@@ -3,6 +3,7 @@ import DataObjectIcon from "@mui/icons-material/DataObject";
 
 interface Props {
   text: string;
+
 }
 function EmptyRepositories(props: Props) {
   const { text } = props;
@@ -14,7 +15,6 @@ function EmptyRepositories(props: Props) {
         </div>
         <div className="empty_Repositories__container_body">
           {text}
-         
         </div>
       </div>
     </div>
