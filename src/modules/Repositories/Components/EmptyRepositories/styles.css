@@ -14,9 +14,7 @@
   justify-content: center;
   margin-bottom: 48px;
 }
-.empty_Repositories__container_header_icon {
-  transform: scale(4);
-}
+
 .empty_Repositories__container_body {
   text-align: center;
   font-size: 24px;

@@ -21,9 +21,10 @@ const useRepositoriesAction = (keyword: string = "", limit = 10) => {
     useRepoStore();
   const [debouncedKeyword, setDebouncedKeyword] = useState(keyword);
   const [loadingRepoId, setLoadingRepoId] = useState<number | null>(null);
+  const[isCheckReq , setIsCheckReq]=useState(true)
   const debouncedSearch = debounce((search: string) => {
     setDebouncedKeyword(search);
-  }, 500);
+  }, 200);
 
   useEffect(() => {
     debouncedSearch(keyword);
@@ -34,6 +35,7 @@ const useRepositoriesAction = (keyword: string = "", limit = 10) => {
 
   useEffect(() => {
     if (!debouncedKeyword) {
+      setIsCheckReq(true)
       setRepositories([]); 
     }
   }, [debouncedKeyword, setRepositories]);
@@ -55,6 +57,7 @@ const useRepositoriesAction = (keyword: string = "", limit = 10) => {
         staleTime: 2000,
         retry: false,
         onSettled: () => {
+          setIsCheckReq(false)
         },
       }
     );
@@ -83,6 +86,8 @@ const useRepositoriesAction = (keyword: string = "", limit = 10) => {
     isLoading: isQueryLoading || isFetching, 
     loadingRepoId, 
     isError,
+    isCheckReq , 
+    setIsCheckReq,
     handleStar,
   };
 };
