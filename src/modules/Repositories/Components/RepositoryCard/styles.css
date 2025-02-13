@@ -5,7 +5,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   padding: 20px;
-  transition: transform 0.3s ease;
   margin-bottom: 12px;
   box-sizing: border-box;
 }
@@ -63,7 +62,6 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,7 +81,4 @@
   background-color: #218838;
 }
 
-/* Hover effect for the card */
-.repo_card:hover {
-  transform: translateY(-5px);
-}
+

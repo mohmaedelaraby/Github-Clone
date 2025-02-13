@@ -12,7 +12,7 @@ import useRepositoriesAction from "../../Hooks/useRepostioriesAction";
 
 function RepositoriesContainer() {
   const { searchQuery, handleSearchChange } = useSearchValue();
-  const { reposData, isLoading, isError, handleStar } =
+  const { reposData, isLoading, isError ,loadingRepoId,handleStar } =
     useRepositoriesAction(searchQuery);
 
   const emptyText = useMemo(() => {
@@ -21,6 +21,8 @@ function RepositoriesContainer() {
       : "No repositories found.. please search for one.";
   }, [searchQuery]);
 
+
+  
   return (
     <div className="repos_page">
       <div className="repos_page_container">
@@ -28,15 +30,19 @@ function RepositoriesContainer() {
           <SearchField onChange={handleSearchChange} />
         </div>
         <div className="repos_page_container__body">
-          {isLoading && <LoadingStatePage />}
+          {isLoading &&  <LoadingStatePage />}
 
           {isError && <ErrorStatePage />}
 
-          {(reposData.length <= 0 || !searchQuery) &&
-            !isLoading &&
-            !isError && (
-              <EmptyRepositories text={emptyText} key={"handleEmpty"} />
-            )}
+          {!searchQuery && !isLoading && !isError && (
+            <EmptyRepositories text={emptyText} key={"handleEmptySearchQuery"} />
+          )}
+
+          {reposData.length <= 0 && searchQuery && !isLoading && !isError && (
+            <EmptyRepositories text={emptyText} key={"handleEmptyData"} />
+          )}
+
+          
 
           {!isLoading &&
             !isError &&
@@ -46,6 +52,7 @@ function RepositoriesContainer() {
               <RepositoryCard
                 key={repo.id}
                 repo={repo}
+                isStarUnstarLoading={loadingRepoId === repo.id}
                 handleStar={handleStar}
               />
             ))}
