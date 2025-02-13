@@ -68,6 +68,12 @@
   border-radius: 100%;
 }
 
+@media screen and (max-width: 426px) {
+  .repo_card_star_btn{
+    padding: 6px;
+  }
+}
+
 .repo_card_star_btn:hover {
   background-color: #57606a;
 }
