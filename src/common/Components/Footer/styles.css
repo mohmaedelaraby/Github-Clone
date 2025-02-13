@@ -3,7 +3,10 @@
     background-color: black;
     color: #fff;
     padding: 16px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
   }
   
   .footer_content {

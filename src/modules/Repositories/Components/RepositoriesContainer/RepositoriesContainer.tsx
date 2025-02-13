@@ -14,7 +14,8 @@ function RepositoriesContainer() {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   // Custom hook to get repositories, loading state, and error state
-  const { reposData, isLoading, isError, handleStar } = useGetRepos(searchQuery);
+  const { reposData, isLoading, isError, handleStar } =
+    useGetRepos(searchQuery);
 
   // Handle search query changes
   const handleSearchChange = useCallback((newSearchValue: string) => {
@@ -39,15 +40,25 @@ function RepositoriesContainer() {
 
           {isError && <ErrorStatePage />}
 
-          {(reposData.length <= 0 || !searchQuery) && !isLoading && !isError && (
-            <EmptyRepositories text={emptyText} key={"handleEmpty"} />
-          )}
+          {(reposData.length <= 0 || !searchQuery) &&
+            !isLoading &&
+            !isError && (
+              <EmptyRepositories text={emptyText} key={"handleEmpty"} />
+            )}
 
-          {!isLoading && !isError && searchQuery && reposData.length > 0 && 
+          {!isLoading &&
+            !isError &&
+            searchQuery &&
+            reposData.length > 0 &&
             reposData.map((repo: Repository) => (
-              <RepositoryCard key={repo.id} repo={repo} handleStar={handleStar} />
-            ))
-          }
+              <RepositoryCard
+                key={repo.id}
+                repo={repo}
+                handleStar={handleStar}
+              />
+            ))}
+
+            
         </div>
       </div>
     </div>

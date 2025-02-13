@@ -1,7 +1,7 @@
 .repos {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
   }
   .repos_header {
     background-color: #0d1117;
@@ -27,5 +27,6 @@
   .repos_body {
     padding: 32px;
     height: 100%;
+    overflow-y: auto;
   }
   

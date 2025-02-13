@@ -11,7 +11,7 @@ const MainLayout = () => {
         <div>
           <Topbar />
         </div>
-        <div>
+        <div className="mainLayout_container">
           <Outlet />
         </div>
         <div>

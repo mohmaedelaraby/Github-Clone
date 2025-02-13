@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Repository } from "../../../../types/Types";
 import { useRepoStore } from "../../../../stores/useRepositoryStore";
+import StarIcon from '@mui/icons-material/Star';
 import "./styles.css";
 
 interface Props {
@@ -28,8 +29,18 @@ function RepositoryCard({ repo, handleStar }: Props) {
     <div className="repo_card">
       <div className="repo_card_header">
         <h2 className="repo_card_header_name">{repo.name}</h2>
-        <p className="repo_card_header_owner">
-          by
+        <button
+        className={`repo_card_star_btn ${isStarred ? "starred" : ""}`}
+        onClick={handleStarClick}
+      >
+        {isStarred ? <StarIcon sx={{color:'gold'}}/> : <StarIcon sx={{color:'white'}}/>}
+      </button>
+       
+      </div>
+
+      
+      <p className="repo_card_header_owner">
+          by 
           <a
             href={repo.owner.html_url}
             target="_blank"
@@ -38,7 +49,6 @@ function RepositoryCard({ repo, handleStar }: Props) {
             {repo.owner.login}
           </a>
         </p>
-      </div>
       <p className="repo_card_description">{repo.description}</p>
       <div className="repo_card_stats">
         <span className="repo_card_stats_stars">
@@ -48,12 +58,7 @@ function RepositoryCard({ repo, handleStar }: Props) {
           Forks: {repo.forks_count}
         </span>
       </div>
-      <button
-        className={`repo_card_star_btn ${isStarred ? "starred" : ""}`}
-        onClick={handleStarClick}
-      >
-        {isStarred ? "★ Unstar" : "⭐ Star"}
-      </button>
+      
     </div>
   );
 }

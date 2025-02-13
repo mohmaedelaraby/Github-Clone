@@ -12,6 +12,9 @@
   background-color: white;
 
 }
+.mainLayout_container{
+  height: calc(100vh - 116px);
+}
 p {
   margin: 0px;
 }
