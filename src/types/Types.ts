@@ -1,4 +1,3 @@
-// types/Types.ts
 
 export interface Owner {
   login: string;

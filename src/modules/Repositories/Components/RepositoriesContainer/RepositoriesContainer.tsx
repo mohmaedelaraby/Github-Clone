@@ -1,28 +1,20 @@
-import { useState, useCallback, useMemo } from "react";
+import { useMemo } from "react";
 
 import "./styles.css";
-import useGetRepos from "../../Hooks/useGetRepos";
 import SearchField from "../../../../common/Components/SearchField/SearchField";
 import LoadingStatePage from "../../../../common/Components/LoadingState/LoadingState";
 import ErrorStatePage from "../../../../common/Components/ErrorState/ErrorState";
 import EmptyRepositories from "../../Components/EmptyRepositories/EmptyRepositories";
 import { Repository } from "../../../../types/Types";
 import RepositoryCard from "../../Components/RepositoryCard/RepositoryCard";
-
+import useSearchValue from "../../../../common/Hooks/useSeachValue";
+import useRepositoriesAction from "../../Hooks/useRepostioriesAction";
 
 function RepositoriesContainer() {
-  const [searchQuery, setSearchQuery] = useState<string>("");
-
-  // Custom hook to get repositories, loading state, and error state
+  const { searchQuery, handleSearchChange } = useSearchValue();
   const { reposData, isLoading, isError, handleStar } =
-    useGetRepos(searchQuery);
+    useRepositoriesAction(searchQuery);
 
-  // Handle search query changes
-  const handleSearchChange = useCallback((newSearchValue: string) => {
-    setSearchQuery(newSearchValue);
-  }, []);
-
-  // Set custom message based on the search query
   const emptyText = useMemo(() => {
     return searchQuery
       ? "No repositories found with this name."
@@ -57,8 +49,6 @@ function RepositoriesContainer() {
                 handleStar={handleStar}
               />
             ))}
-
-            
         </div>
       </div>
     </div>

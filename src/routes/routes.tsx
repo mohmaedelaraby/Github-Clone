@@ -1,18 +1,21 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import MainLayout from "../common/Layouts/MainLayout/MainLayout";
 import NotFound from "../common/Components/NotFound/NotFound";
-import RepositoriesPage from "../modules/Repositories/Pages/RepositoriesPage/RepositoriesPage";
-
-// Assuming this is your 404 page component
+import LoadingStatePage from "../common/Components/LoadingState/LoadingState";
 
 export const RootRoutes = () => {
   const navigate = useNavigate();
 
-  // Check if the current location is the root path ("/")
+  //lazy load pages
+  const RepositoriesPage = lazy(
+    () =>
+      import("../modules/Repositories/Pages/RepositoriesPage/RepositoriesPage")
+  );
+
+  //setDefault
   useEffect(() => {
     if (window.location.pathname === "/") {
-      // Redirect to "/seasons" if the path is "/"
       navigate("/repos");
     }
   }, [navigate]);
@@ -20,7 +23,15 @@ export const RootRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route path="/repos" index element={<RepositoriesPage/>} />
+        <Route
+          path="/repos"
+          index
+          element={
+            <Suspense fallback={ <LoadingStatePage/>}>
+              <RepositoriesPage />
+            </Suspense>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

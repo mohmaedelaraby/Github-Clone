@@ -17,7 +17,6 @@ const usePinStore = create<StoreState>((set) => ({
         updatedPinnedRaces.add(raceId);
       }
 
-      // Update localStorage to persist pinned races
       localStorage.setItem(
         "pinnedRaces",
         JSON.stringify(Array.from(updatedPinnedRaces))

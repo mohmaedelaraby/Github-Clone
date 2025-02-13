@@ -1,6 +1,5 @@
-// LoadingPage.tsx
 import { CircularProgress } from "@mui/material";
-import "./styles.css"; // Import the CSS file
+import "./styles.css"; 
 
 const LoadingStatePage = () => {
   return (

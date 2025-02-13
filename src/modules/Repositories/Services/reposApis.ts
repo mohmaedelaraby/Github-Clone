@@ -1,9 +1,8 @@
 import axios from "axios";
 
-// Helper function to get the GitHub token
 const getAuthToken = () => {
-  const token = import.meta.env.VITE_GITHUB_API_TOKEN; // Correctly access the token
-  console.log("Token:", token); // Debugging line
+  const token = import.meta.env.VITE_GITHUB_API_TOKEN; 
+  console.log("Token:", token); 
   if (!token) {
     throw new Error("GitHub API token is missing.");
   }
@@ -12,11 +11,11 @@ const getAuthToken = () => {
 
 export const searchRepositories = async (keyword: string) => {
   const token = getAuthToken();
-  const apiUrl = import.meta.env.VITE_API_URL; // Correctly access the API_URL
+  const apiUrl = import.meta.env.VITE_API_URL; 
 
   try {
     const response = await axios.get(
-      `${apiUrl}/search/repositories`, // Use API_URL here
+      `${apiUrl}/search/repositories`, 
       {
         headers: {
           Authorization: `Bearer ${token}`,

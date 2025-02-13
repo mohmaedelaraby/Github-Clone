@@ -1,4 +1,3 @@
-// ErrorPage.tsx
 import { WarningAmber } from '@mui/icons-material'; 
 import './styles.css'; 
 

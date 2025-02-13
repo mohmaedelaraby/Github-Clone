@@ -9,25 +9,22 @@ import {
   unstarRepository,
 } from "../Services/reposApis";
 
-// Debounced API call function
 const fetchRepos = async (keyword: string) => {
   if (keyword) {
-    return await searchRepositories(keyword); // Call API to search repositories
+    return await searchRepositories(keyword); 
   }
-  return []; // Return an empty array if there is no keyword
+  return []; 
 };
 
-const useGetRepos = (keyword: string = "", limit = 10) => {
+const useRepositoriesAction = (keyword: string = "", limit = 10) => {
   const { repositories, setRepositories, toggleStar, starredRepos } =
     useRepoStore();
   const [debouncedKeyword, setDebouncedKeyword] = useState(keyword);
 
-  // Update debounced keyword after user stops typing
   const debouncedSearch = debounce((search: string) => {
     setDebouncedKeyword(search);
-  }, 200); // Debounce time set to 200ms (0.5 second)
+  }, 200); 
 
-  // Update state only after a delay
   useEffect(() => {
     debouncedSearch(keyword);
     return () => {
@@ -38,34 +35,31 @@ const useGetRepos = (keyword: string = "", limit = 10) => {
   const { data, isLoading, isError }: UseQueryResult<Repository[], Error> =
     useQuery<Repository[], Error>(
       ["repos", { debouncedKeyword, limit }],
-      () => fetchRepos(debouncedKeyword), // Use debounced keyword for API call
+      () => fetchRepos(debouncedKeyword), 
       {
-        enabled: !!debouncedKeyword, // Only enable the query if there is a keyword
+        enabled: !!debouncedKeyword, 
         onSuccess: (data) => {
-          setRepositories(data); // Update Zustand state with fetched repositories
+          setRepositories(data); 
         },
         refetchOnWindowFocus: false,
         keepPreviousData: true,
         staleTime: 2000,
-        retry: false, // Disable retry on error
+        retry: false,
       }
     );
 
-  // Handle star/unstar for a repository
   const handleStar = async (repo: Repository) => {
     const isRepoStarred = starredRepos.has(repo.full_name);
 
     try {
       if (isRepoStarred) {
-        await unstarRepository(repo.owner.login, repo.name); // Unstar repo if already starred
+        await unstarRepository(repo.owner.login, repo.name); 
       } else {
-        await starRepository(repo.owner.login, repo.name); // Star the repo if not starred
+        await starRepository(repo.owner.login, repo.name); 
       }
 
-      // Toggle the local starred state using Zustand
       toggleStar(repo);
 
-      // Optionally update local star count (if needed)
     } catch (error) {
       console.error("Error handling star/unstar:", error);
     }
@@ -75,8 +69,8 @@ const useGetRepos = (keyword: string = "", limit = 10) => {
     reposData: repositories || data,
     isLoading,
     isError,
-    handleStar, // Function to toggle star status
+    handleStar, 
   };
 };
 
-export default useGetRepos;
+export default useRepositoriesAction;

@@ -1,0 +1,49 @@
+/* Styling for the 404 Not Found page */
+.not_found {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+  }
+  
+  .not_found_content {
+    text-align: center;
+    padding: 30px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .not_found_title {
+    font-size: 100px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+  }
+  
+  .not_found_message {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .not_found_actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .not_found_btn {
+    background-color: #0d1117;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+ 
+  
